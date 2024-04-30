@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="icon" href="https://media.licdn.com/dms/image/C4D0BAQFVBPbc6-yxoA/company-logo_200_200/0/1677167041761?e=2147483647&v=beta&t=1SF4xgIVbgQPd1zF9CvaSVTlGr04rRXkc9F3WFKD4hc" 
+          type="image/x-icon"> 
+    <style>
+        body {
+            font-family: times new roman, sans-serif;
+            text-align: center;
+            background-color: blueviolet;
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <marquee behavior="scroll">*Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator**Age Calculator*</marquee>
+    <h1>Age Calculator</h1>
+    <form id="ageForm">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <button type="submit">Calculate Age</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("ageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var dob = new Date(document.getElementById("dob").value);
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            var monthDiff = today.getMonth() - dob.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            document.getElementById("result").innerText = "Your age is: " + age;
+        });
+    </script>
+</body>
+</html>
